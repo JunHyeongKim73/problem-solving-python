@@ -1,6 +1,6 @@
 from sys import stdin
 N = int(input())
-A = int(stdin.readline)
+A = list(map(int, stdin.readline().strip().split()))
 
 dp = [1] * N
 for i in range(N):

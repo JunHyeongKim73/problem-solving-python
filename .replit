@@ -1,2 +1,2 @@
 language = "python3"
-run = "python main.py"
+run = "python BOJ/가장_긴_증가하는_부분_수열.py"
