@@ -1,2 +1,2 @@
 language = "python3"
-run = "python BOJ/트리의_부모_찾기.py"
+run = "python BOJ/DP/RGB거리.py"
