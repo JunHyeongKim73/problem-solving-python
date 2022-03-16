@@ -1,41 +1,55 @@
 from sys import stdin
 
-N = int(input())
-lists = [[-1, -1] for _ in range(N)]
+class Node:
+    def __init__ (self,data,left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
 
-# 노드가 A부터 순차적으로 커지므로 인덱스를 이용하여 트리를 리스트로 표현할 수 있다
-for i in range(N):
-	root, left, right = map(str, stdin.readline().split())
-	
-	lists[ord(root)-ord('A')][0] = left
-	lists[ord(root)-ord('A')][1] = right
+def preorder(node): # 전위순회
+    if node is None: # 노드가 없을 경우 그냥 return
+        return
+    print(node.data, end = '') # 루트
+    if node.left: # 왼쪽자식
+        preorder(tree[node.left])
+    if node.right: #오르쪽 자식
+        preorder(tree[node.right])
 
-def preOrder(idx: int):
-	print(chr(ord('A') + idx), end='')
-	if lists[idx][0] != '.':
-		preOrder(ord(lists[idx][0]) - ord('A'))
-	if lists[idx][1] != '.':	
-		preOrder(ord(lists[idx][1]) - ord('A'))
+def inorder(node): # 중위순회
+    if node is None:
+        return
+    if node.left: #왼쪽자식
+        inorder(tree[node.left])
+    print(node.data, end='') # 루트
+    if node.right: # 오른쪽
+        inorder(tree[node.right])
 
-def inOrder(idx: int):
-	if lists[idx][0] != '.':
-		inOrder(ord(lists[idx][0]) - ord('A'))
-	print(chr(ord('A') + idx), end='')
-	if lists[idx][1] != '.':	
-		inOrder(ord(lists[idx][1]) - ord('A'))
+def postorder(node): # 후위순회
+    if node is None:
+        return
+    if node.left: # 왼쪽 자식
+         postorder(tree[node.left])
+    if node.right: #오른쪽 자식
+        postorder(tree[node.right]) # 루트
+    print(node.data, end='')
 
-def postOrder(idx: int):
-	if lists[idx][0] != '.':
-		postOrder(ord(lists[idx][0]) - ord('A'))
-	if lists[idx][1] != '.':	
-		postOrder(ord(lists[idx][1]) - ord('A'))
-	print(chr(ord('A') + idx), end='')
-		
-preOrder(0)
+
+n = int(stdin.readline()) # 이진트리의 노드 개수
+'''
+트리를 dictionary로 표현
+index로 찾는데 O(1)이 걸리므로 문제가 없음!
+'''
+tree = {}
+for __ in range(n):
+    root, left, right = stdin.readline().strip().split() # A B C (공백삭제하고 자르기)
+    if left == '.': # '. ' 일 경우 비어있는 거
+        left = None
+    if right =='.':
+        right = None
+    tree[root] = Node(root,left,right)
+
+preorder(tree['A'])
 print()
-
-inOrder(0)
+inorder(tree['A'])
 print()
-
-postOrder(0)
-print()
+postorder(tree['A'])
