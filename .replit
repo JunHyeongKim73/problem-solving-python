@@ -1,2 +1,0 @@
-language = "python3"
-run = "python BOJ/트리_순회.py"
