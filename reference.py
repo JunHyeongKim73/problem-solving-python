@@ -19,3 +19,6 @@
 
 # ! 2차원 배열 초기화
 # arr = [[0] * N for _ in range(N)]
+
+# 우선순위 큐
+# from queue import PriorityQueue
