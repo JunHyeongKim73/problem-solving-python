@@ -28,3 +28,6 @@
 # q = []
 # heapq.heappush(q, iterm)
 # heapq.heappop(q)
+
+# 최대 재귀 깊이
+# sys.setrecursionlimit(10000)
