@@ -20,6 +20,9 @@ def solve(start, target):
     q = []
     heapq.heappush(q, (start, 0))
 
+    # 최악의 경우 각각의 간선마다 업데이트가 발생 -> 최대 E번 반복
+    # E개의 원소에 대해 우선순위 큐 작업을 한다면 O(log|E|)
+    # 따라서 시간복잡도는 O(ElogE) => O(ElogV)
     while q:
         s, distance = heapq.heappop(q)
         if dist[s] < distance:
