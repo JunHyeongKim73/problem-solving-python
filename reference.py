@@ -31,3 +31,9 @@
 
 # 최대 재귀 깊이
 # sys.setrecursionlimit(10000)
+
+# 조합
+# from itertools import combinations
+
+# deque
+# from collections import deque
